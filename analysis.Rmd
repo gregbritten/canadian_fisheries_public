@@ -1,0 +1,325 @@
+---
+title: "Current model"
+author:
+  - Gregory Britten, Laurenne Schiller, Boris Worm
+output:
+  pdf_document: default
+  date: "`r Sys.Date()`"
+  #html_notebook: default
+---
+
+Call script to load packages and process data 
+```{r message=FALSE, warning=FALSE}
+source('../r/process.r')
+```
+
+Fit full model
+```{r,tidy.opts=list(width.cutoff=60)}
+mod_full <- polr(status ~
+                   fishing_vulnerability + 
+                   trophic_level + 
+                   log10value + 
+                   ref_points +   
+                   dfo_region + 
+                   gear + 
+                   taxa + 
+                   msc_status + 
+                   sea_monitoring, data=d, Hess=TRUE)
+```
+
+Prune variables according to backward/forward step-wise selection using AIC 
+```{r}
+mod_r <- suppressWarnings(step(mod_full,trace=0,direction='both')) #applies stepwise AIC selection algorithm
+```
+
+List the continuous variables to separate for plotting purposes
+```{r}
+cont_var <- c("fishing_vulnerability", "trophic_level", "log10value", "ref_points")  
+```
+
+Combine parameter estimates into a big table
+```{r}
+coefs      <- summary(mod_full)$coefficients[,1]
+coefs_r    <- summary(mod_r)$coefficients[,1]
+ses_r      <- summary(mod_r)$coefficients[,2]
+
+df <- data.frame(var=names(coefs), coefs=coefs) %>%
+  left_join(.,data.frame(var=names(coefs_r), coefs_r=coefs_r),by='var') %>%
+  left_join(.,data.frame(var=names(coefs_r), ses_r=ses_r),by='var')
+```
+
+
+Add in the reference category for the categorical variable estimates, then re-group together
+```{r,tidy=TRUE,tidy.opts=list(width.cutoff=60)}
+int_se    <- summary(mod_r)$coefficients[names(coefs_r)=="Critical|Cautious",2]
+dfcat <- df[!(df$var %in% cont_var| df$var %in% c("Critical|Cautious","Cautious|Healthy")),] %>%
+  rbind(.,data.frame(var="dfo_regionQuebec",  coefs=0,coefs_r=0,ses_r=int_se)) %>%
+  rbind(.,data.frame(var="gearPelagic nets",  coefs=0,coefs_r=0,ses_r=int_se)) %>%
+  rbind(.,data.frame(var="taxaPleuronectidae",coefs=0,coefs_r=0,ses_r=int_se)) %>%
+  rbind(.,data.frame(var="msc_statusNone",    coefs=0,coefs_r=0,ses_r=int_se)) %>%
+  .[order(.$var),] %>% mutate(ses_r=replace(ses_r,var=="gearPelagic lines",1E-6))
+```  
+
+
+Subtract the mean effect from each variable. This will let visualize the relative effect of each category within each variable. I think this the idea we came up with last time... 
+```{r}
+nms <- c('taxa','dfo_region','gear','msc_status','sea_monitoring')
+for(i in 1:length(nms)){
+  dfcat[grep(nms[i],dfcat$var),c(2,3)] <- 
+    apply(dfcat[grep(nms[i],dfcat$var),c(2,3)], 2, function(x){
+      return(x - mean(x))
+    })
+}  
+```  
+
+Order the relative effects across categories within each variable
+```{r}
+ddf <- dfcat[-c(1:nrow(dfcat)),]
+for(i in 1:length(nms)){
+  dddf <- dfcat[grep(nms[i],dfcat$var),] %>%
+    .[order(.$coefs_r),]
+  ddf <- rbind(ddf,dddf)
+}
+ddf <- ddf[complete.cases(ddf$coefs_r),]
+```
+
+Clean up category names for plotting
+```{r}
+ddf$cat <- ddf$var
+for(i in 1:length(nms)){
+  ddf$cat[grep(nms[i],ddf$cat)] <- gsub(nms[i], '', ddf$cat[grep(nms[i],ddf$cat)])
+}
+```
+
+
+Make a nice plot
+```{r,tidy.opts=list(width.cutoff=60),fig.height = 5, fig.width = 7}
+nms <- c('dfo_region','gear','msc_status')
+cols <- c('black','red','dark green','blue')
+par(mar=c(6,3,2,2),oma=c(2,2,2,2))
+plot(-999, xlim=c(1,nrow(ddf)), 
+     ylim=c(min(ddf$coefs_r-2*ddf$ses_r,na.rm=TRUE),
+            max(ddf$coefs_r+2*ddf$ses_r,na.rm=TRUE)),xaxt='n',bty='n',xlab='',ylab='')
+for(i in 1:length(nms)){
+    is <- grep(nms[i],ddf$var)
+    segments(x0=is,x1=is,
+             y0=ddf$coefs_r[is]-1.96*ddf$ses_r[is],
+             y1=ddf$coefs_r[is]+1.96*ddf$ses_r[is],lty=2)
+    points(is,ddf$coefs_r[is],col=cols[i],pch=19)
+    axis(side=1,at=is,labels=ddf$cat[is],las=2,cex.axis=0.7,col=cols[i])
+}
+abline(h=0,lty=2)
+legend(x=1,y=8,bty='n',
+       legend=c('DFO Region','Gear','MSC Status'),
+       pch=19,col=c('black','red','dark green'))
+```
+
+```{r}
+write.csv(file='../coefficients_2022.csv',data.frame(variable=ddf$var,
+                                                 coefficient=ddf$coefs_r,
+                                                 standard_error=ddf$ses_r,
+                                                 category=ddf$cat),row.names=FALSE)
+```
+
+```{r}
+dfcon <- df[df$var %in% cont_var,] %>% na.omit()
+```
+
+Plot slopes of pruned model
+```{r,tidy=TRUE, tidy.opts=list(width.cutoff=60)}
+par(mar=c(6,3,2,2),oma=c(2,2,2,2))
+  plot(x=1:nrow(dfcon), y=dfcon$coefs_r, xaxt='n', bty='n',ylim=c(-3,4),xlab='',ylab='',pch=19)
+  segments(x0=1:nrow(dfcon), x1=1:nrow(dfcon), y0=dfcon$coefs_r-2*dfcon$ses_r, y1=dfcon$coefs_r+2*dfcon$ses_r)
+  abline(h=0,lty=2)
+  mtext(side=2,line=2.5,'Standardized Coefficient')
+  axis(side=1,at=1:nrow(dfcon),labels=c("Fishing Vulnerability","Log Value", "Ref. Points"),las=2,cex.axis=0.6)
+```
+
+```{r}
+write.csv(file='../slopes_2022.csv',data.frame(variable=dfcon$var,
+                                          coefficient=dfcon$coefs_r,
+                                          standard_error=dfcon$ses_r),row.names=FALSE)
+```
+
+# Deviant Analysis
+
+Plot the deviants for the pruned full model
+```{r}
+dev <- as.numeric(d$status) - as.numeric(predict(mod_r))
+```
+
+```{r, fig.width = 6, fig.height = 4, tidy=TRUE, tidy.opts=list(width.cutoff=60)}
+par(mar=c(6,4,6,2))
+plot(1:length(dev), dev, pch=ifelse(dev==2|dev==-2, 4, 19), bty='n', xaxt='n', xlab='', ylab='Deviation')
+  axis(3, at=which(dev== 2), labels=d$stock_id[which(dev== 2)], las=2, cex.axis=0.5)
+  axis(1, at=which(dev==-2), labels=d$stock_id[which(dev==-2)], las=2, cex.axis=0.5)
+```
+
+Functions for bootstrapping the deviant analysis. One function includes taxon and the other does not.
+```{r}
+boot_dev <- function(dat){
+  dat_boot <- dat[sample(1:nrow(dat), size=nrow(dat), replace=TRUE),]
+  mod_full <- suppressWarnings(polr(status ~ 
+                   fishing_vulnerability + 
+                   trophic_level + 
+                   log10value + 
+                   ref_points + 
+                   dfo_region + 
+                   gear + 
+                   taxa + 
+                   msc_status + 
+                   sea_monitoring, data=dat_boot))
+  mod_r <- suppressWarnings(step(mod_full,trace=0))
+  dev <- as.numeric(d$status) - as.numeric(predict(mod_r, newdata=d)) 
+  return(dev)
+}
+```
+
+Run the bootstrap analysis for pruned models with and without taxon
+```{r}
+library(doParallel)
+x <- detectCores()
+registerDoParallel(x-1)
+
+n_boot <- 10000
+boot_preds <- foreach(i=1:n_boot, .combine=cbind) %dopar% {
+  pred    <- try(boot_dev(d),silent=TRUE)          
+  while(class(pred)=="try-error")    pred    <- try(boot_dev(d),silent=TRUE)          
+  pred
+}
+boot_preds <- as.matrix(boot_preds)
+```
+
+Combine predictions in tables
+```{r}
+pred_tab <- data.frame(stock=d$stock_id,
+                     obs_status=d$status, 
+                     pred_best=predict(mod_r),
+                     dev_best=dev,
+                     pred_boot=rowSums(boot_preds)/n_boot,
+                     pred_sd=apply(boot_preds, 1, sd))
+pred_tab <- pred_tab[order(pred_tab$pred_boot),]
+```
+
+Plot bootstrapped deviants for pruned full model
+```{r,tidy=TRUE, tidy.opts=list(width.cutoff=60)}
+par(mar=c(6,4,6,2))
+plot(1:nrow(d), pred_tab$pred_boot, bty='n', 
+     xaxt='n', xlab='', ylab='Bootstrapped Deviation', ylim=c(-2,2),
+     pch=19,cex=0.5)
+  segments(x0=1:nrow(d), x1=1:nrow(d), y0=pred_tab$pred_boot-pred_tab$pred_sd, y1=pred_tab$pred_boot+pred_tab$pred_sd, lty=3)
+  axis(1, at=1:nrow(d), labels=pred_tab$stock, las=2, cex.axis=0.2)
+  abline(h=0,lty=2)
+```
+
+Write predictions to disk
+```{r}
+write.csv(pred_tab, 
+          row.names=FALSE,
+          file='../deviance_2022.csv')
+```
+
+# Cross Validation
+
+We perform a cross validation analysis where we drop some of the data before the fitting process and then try to predict the excluded data. The function below drops a subset of size $k$ from the data and assesses the percent-classified correctly for the excluded data
+```{r}
+cross_validate <- function(dat,k){
+  ex <- sample(1:nrow(dat), size=k)
+  dat_cross <- dat[-ex,]
+  mod_full <- suppressWarnings(polr(status ~ 
+                   fishing_vulnerability + 
+                   trophic_level + 
+                   log10value + 
+                   ref_points + 
+                   dfo_region + 
+                   gear + 
+                   taxa + 
+                   msc_status + 
+                   sea_monitoring, data=dat_cross))
+  mod_r <- suppressWarnings(step(mod_full,trace=0))
+  dev <- as.numeric(dat[ex,]$status) - as.numeric(predict(mod_r, newdata=dat[ex,]))
+  return(length(dev[dev==0])/length(dev))
+}
+```
+
+Then apply the function 100 times to get a distribution of cross validation scores
+```{r}
+n_cv <- 1000
+r2s <- numeric(n_cv)
+for(i in 1:n_cv){
+  r2 <- try(cross_validate(d,20),silent=TRUE)          
+  while(class(r2)=="try-error") r2 <- try(cross_validate(d,20),silent=TRUE)          
+  r2s[i] <- r2
+}
+```
+
+Plot a histogram of the cross validation score distribution and add a red line for the score when using the full dataset
+```{r}
+hist(r2s,main='Cross Validation Scores')
+abline(v=length(dev[dev==0])/length(dev), lwd=2, col='red')
+```
+The plot above looks good. The predictive accuracy is not dramatically decreased when trying to predict 'new' data. In some cases the predictive accuracy increases. 
+
+# Predict Uncertain Stocks
+
+We can use the fitted model to infer the status for the *Uncertain* stocks. 
+
+Subset data for the uncertain statuses (note that the uncertain stocks have a new gear level 'Rod-and-reel' which we remove):
+```{r}
+dun <- dd %>% filter(status=="Uncertain")
+```
+
+Make a table for the predictions:
+```{r}
+dun_pred <- data.frame(stock  = dun$stock_id, 
+                       status = predict(mod_r, newdata=dun))
+```
+
+```{r}
+write.csv(dun_pred, row.names=FALSE, file='../predictions.csv')
+```
+
+Check the proportion of *Uncertain* stocks predicted to be *Critical*, *Cautious*, and *Healthy*:
+```{r}
+table(predict(mod_r, newdata=dun))/nrow(dun)
+```
+
+Compare with the proportions of those with known status:
+```{r}
+table(d$status)/nrow(d)
+```
+
+## Compare to CMSY predictions
+
+Read in data, create data frame for merging, and define factor variable
+```{r,tidy=TRUE, tidy.opts=list(width.cutoff=60)}
+cmsy <- read_excel('../data/CMSY_uncertain stocks.xlsx', sheet="Oceana_CMSY")
+
+cmsy_status <- data.frame(stock       = cmsy$stock_id[cmsy$stock_id%in%intersect(cmsy$stock_id,dun$stock_id)],
+                          cmsy_status = cmsy$`Stock status`[cmsy$stock_id%in%intersect(cmsy$stock_id,dun$stock_id)]) %>%
+  mutate(cmsy_status = factor(cmsy_status, levels=c("Critical", "Cautious", "Healthy"), ordered=TRUE))
+```
+
+Combine the model predictions and cmsy predictions, remove NAs
+```{r}
+compare <- left_join(dun_pred, cmsy_status, by="stock") %>% filter(complete.cases(.))
+```
+
+Correlation between 
+```{r}
+cor(as.numeric(compare$status), as.numeric(compare$cmsy_status))
+```
+
+Convert cateogies to numbers and make a scatter plot. Points are jittered so you they don't fall ontop of one another and you can see how many data points are in each bin.
+```{r}
+plot(jitter(as.numeric(compare$status)), jitter(as.numeric(compare$cmsy_status)),
+     xlab='Model Prediction',
+     ylab='CMSY Prediction')
+```
+Write a table to disk.
+```{r}
+write.csv(compare, 
+          row.names=FALSE,
+          file='../data/compare_predictions.csv')
+```
+

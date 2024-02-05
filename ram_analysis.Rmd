@@ -1,0 +1,266 @@
+---
+title: "RAM Data - B/BMSY statistics and model fitting"
+author:
+  - Gregory Britten
+output:
+  pdf_document: default
+  #html_notebook: default
+---
+
+Load tidyverse package for data wrangling 
+```{r message=FALSE, warning=FALSE}
+library(tidyverse)
+library(readxl)
+```
+
+Load latest version of RAM dataset as an rdata file. 
+```{r}
+load('../data/RAMLDB v4.495/R Data/DBdata[asmt][v4.495].RData') #loads 's
+cdn_stocks  <- stock %>% filter(primary_country=="Canada")
+cdn_data    <- timeseries_values_views %>% filter(stockid%in%cdn_stocks$stockid)
+```
+
+# BMSY analysis
+
+Find intersection of stocks
+```{r}
+stocks    <- unique(cdn_data$stockid)
+
+dd        <- read_excel('../data/Cdn_fishery_attributes_current.xlsx', sheet="2022 Fishery attributes")
+dd_stocks <- unique(dd$ram_stock_id)
+
+istocks <- intersect(dd_stocks,stocks)
+```
+
+Approximate where B/BMSY not available
+```{r}
+df <- data.frame(stock=character(),bbmsy=character(),approx=numeric())
+for(i in 1:length(istocks)){
+  dat   <- cdn_data[cdn_data$stockid==istocks[i],]
+  bbmsy <- dat$BdivBmsypref %>% na.omit()
+  if(length(bbmsy)>0){
+    bbmsy <- bbmsy[length(bbmsy)]
+    df <- rbind(df, data.frame(stock=istocks[i],bbmsy=bbmsy,approx=0))
+  }else{
+    B <- dat$TBbest
+    bbmsy <- ifelse(sum(!is.na(B))>0, tail(B[!is.na(B)]/(0.5*max(B,na.rm=TRUE)),1), NA)
+    df <- rbind(df, data.frame(stock=istocks[i],bbmsy=bbmsy,approx=1))
+  }
+}
+df <- df[complete.cases(df$bbmsy),] %>% .[order(.$bbmsy),] #order according to magnitude of bbmsy
+```
+
+```{r}
+write.csv(df, 
+          row.names=FALSE,
+          file='../bbmsy.csv')
+
+```
+
+Make a plot
+```{r}
+plot(1:nrow(df),df$bbmsy,col=ifelse(df$approx==0,'black','red'),pch=19,xaxt='n',bty='n',xlab='',ylab='B/Bmsy')
+  abline(h=1,lty=2)
+  axis(side=1,at=1:nrow(df),labels=df$stock,las=2,cex.axis=0.3)
+  legend('topleft',legend=c("Assessment B/Bmsy","Approximation"),pch=19,col=c('black','red'),bty='n')
+```
+# Fit model to B/BMSY
+
+Get rid of NAs
+```{r}
+df_all <- df[complete.cases(df),]
+```
+
+Process data according to previous aggregation rules
+```{r}
+dat_ram <- left_join(df_all,dd,by=c("stock"="ram_stock_id")) %>%
+  mutate(dfo_region = ifelse(dfo_region=="Arctic"|dfo_region=="NCR", 'Central', dfo_region),
+                    gear       = ifelse(gear=="SOK"|gear=="Hand", "Hand gathered", gear),
+                    gear       = ifelse(gear=="Midwater trawl"|gear=="Purse seine", "Pelagic nets", gear),
+                    gear       = ifelse(gear=="Longline"|gear=="Rod-and-reel"|gear=="Troll", "Pelagic lines", gear),
+                    gear       = ifelse(gear=="Bottom trawl"|gear=="Dredge", "Demersal nets", gear),
+                    gear       = ifelse(gear=="Weir"|gear=="Trap","Trap",gear),
+                    taxa       = ifelse(taxa=="Anoplopomatidae"|taxa=="Lophiidae"|taxa=="Myxinidae"|taxa=="Osmeridae"|taxa=="Xiphiidae"|taxa=="Scombridae", "Other", taxa)) %>%
+  mutate(fishing_vulnerability = scale(fishing_vulnerability),
+                    trophic_level         = scale(trophic_level),
+                    log10value            = scale(log10(`value_$` + 1)),
+                    ref_points            = scale(ref_points)) %>%
+  #filter(status!='Uncertain') %>%
+  mutate(dfo_region     = factor(dfo_region),
+                  gear           = factor(.$gear),
+                  msc_status     = factor(.$msc_status),
+                  sea_monitoring = factor(.$sea_monitoring), 
+                  taxa           = factor(.$taxa),
+                  approx         = factor(.$approx)) %>% 
+  mutate(sea_monitoring = relevel(sea_monitoring, ref="Partial"),
+                  dfo_region = relevel(dfo_region, ref="Quebec"),
+                  msc_status = relevel(msc_status, ref="None"),
+                  gear = relevel(gear, ref="Pelagic nets"),
+                  taxa = relevel(taxa, ref="Pleuronectidae"))
+
+dat_ram$status <- factor(dat_ram$status, levels=c("Critical", "Cautious", "Healthy"), ordered=TRUE)
+```
+
+#Fit full model
+```{r}
+mod_full <- lm(bbmsy ~
+                   fishing_vulnerability + 
+                   trophic_level + 
+                   log10value + 
+                   ref_points +   
+                   dfo_region + 
+                   gear + 
+                   taxa + 
+                   msc_status + 
+                   sea_monitoring+ 
+                   approx, data=dat_ram)
+```
+
+#Prune model
+```{r}
+mod_r <- step(mod_full,trace=0,direction='both') #applies backward stepwise selection algorithm
+```
+
+#List continuous variable names to separate for plotting purposes
+```{r}
+cont_var <- c("log10value","ref_points")  
+```
+
+Combine parameter estimates into a big table
+```{r}
+coefs      <- summary(mod_full)$coefficients[,1]
+coefs_r    <- summary(mod_r)$coefficients[,1]
+ses_r      <- summary(mod_r)$coefficients[,2]
+
+df <- data.frame(var=names(coefs), coefs=coefs) %>%
+  left_join(.,data.frame(var=names(coefs_r), coefs_r=coefs_r),by='var') %>%
+  left_join(.,data.frame(var=names(coefs_r), ses_r=ses_r),by='var')
+```
+
+
+Add in the reference category for the categorical variable estimates, then re-group together
+```{r,tidy=TRUE,tidy.opts=list(width.cutoff=60)}
+int_se    <- summary(mod_r)$coefficients[names(coefs_r)=="(Intercept)",2]
+dfcat <- df[!(df$var %in% cont_var| df$var %in% c("(Intercept)")),] %>%
+  rbind(.,data.frame(var="dfo_regionQuebec",  coefs=0,coefs_r=0,ses_r=int_se)) %>%
+  rbind(.,data.frame(var="taxaPleuronectidae",coefs=0,coefs_r=0,ses_r=int_se)) %>%
+  rbind(.,data.frame(var="approx0",coefs=0,coefs_r=0,ses_r=int_se)) %>%
+  .[order(.$var),] 
+```  
+
+
+Subtract the mean effect from each variable. This will let visualize the relative effect of each category within each variable. I think this the idea we came up with last time... 
+```{r}
+nms <- c('dfo_region','taxa','approx')
+for(i in 1:length(nms)){
+  dfcat[grep(nms[i],dfcat$var),c(2,3)] <- 
+    apply(dfcat[grep(nms[i],dfcat$var),c(2,3)], 2, function(x){
+      return(x - mean(x))
+    })
+}  
+```  
+
+Order the relative effects across categories within each variable
+```{r}
+ddf <- dfcat[-c(1:nrow(dfcat)),]
+for(i in 1:length(nms)){
+  dddf <- dfcat[grep(nms[i],dfcat$var),] %>%
+    .[order(.$coefs_r),]
+  ddf <- rbind(ddf,dddf)
+}
+ddf <- ddf[complete.cases(ddf$coefs_r),]
+```
+
+Clean up category names for plotting
+```{r}
+ddf$cat <- ddf$var
+for(i in 1:length(nms)){
+  ddf$cat[grep(nms[i],ddf$cat)] <- gsub(nms[i], '', ddf$cat[grep(nms[i],ddf$cat)])
+} 
+ddf$cat[ddf$cat==1] <- 'Yes'
+ddf$cat[ddf$cat==0] <- 'No'
+```
+
+```{r}
+write.csv(ddf[,c(1,3,4,5)],file='../coefficients_bbmsy.csv')
+```
+
+
+Make a nice plot
+```{r,tidy.opts=list(width.cutoff=60),fig.height = 5, fig.width = 7}
+nms <- c('dfo_region','taxa','approx')
+cols <- c('black','red','dark green')
+par(mar=c(6,3,2,2),oma=c(2,2,2,2),cex.axis=0.8)
+plot(-999, xlim=c(1,nrow(ddf)), 
+     ylim=c(min(ddf$coefs_r-2*ddf$ses_r,na.rm=TRUE),
+            max(ddf$coefs_r+2*ddf$ses_r,na.rm=TRUE)),xaxt='n',bty='n',xlab='',ylab='')
+for(i in 1:length(nms)){
+    is <- grep(nms[i],ddf$var)
+    segments(x0=is,x1=is,
+             y0=ddf$coefs_r[is]-1.96*ddf$ses_r[is],
+             y1=ddf$coefs_r[is]+1.96*ddf$ses_r[is],lty=2)
+    points(is,ddf$coefs_r[is],col=cols[i],pch=19)
+    axis(side=1,at=is,labels=ddf$cat[is],las=2,cex.axis=0.7,col=cols[i])
+}
+abline(h=0,lty=2)
+legend('topleft',bty='n',
+       legend=c('DFO Region','taxa','B/Bmsy Approximation'),
+       pch=19,col=c('black','red','dark green'))
+```
+
+Subset continuous variables
+```{r}
+dfcon <- df[df$var %in% cont_var,] %>% na.omit()
+```
+
+```{r}
+write.csv(dfcon,row.names=FALSE,file='../slopes_bbmsy.csv')
+```
+
+Plot slopes of pruned model
+```{r,tidy=TRUE, tidy.opts=list(width.cutoff=60)}
+par(mar=c(6,3,2,2),oma=c(2,2,2,2),cex.axis=0.7)
+  plot(x=1:nrow(dfcon), y=dfcon$coefs_r, xaxt='n', bty='n',ylim=c(-0.5,0.5),xlab='',ylab='',pch=19,xlim=c(0.5,2.5))
+  segments(x0=1:nrow(dfcon), x1=1:nrow(dfcon), y0=dfcon$coefs_r-2*dfcon$ses_r, y1=dfcon$coefs_r+2*dfcon$ses_r)
+  abline(h=0,lty=2)
+  mtext(side=2,line=2.5,'Standardized Coefficient')
+  axis(side=1,at=1:nrow(dfcon),labels=c("Log Value","Reference Points"),las=2,cex.axis=0.7)
+```
+Compute deviations
+```{r}
+dev <- as.numeric(dat_ram$bbmsy) - as.numeric(predict(mod_r))
+
+devdf <- data.frame(stock=dat_ram$stock_id, dev=dev) %>% 
+  .[order(.$dev),]
+```
+
+Make a plot. Note we do not need bootstrapping here to enhance resolution of differences between stocks. We could apply bootstrapping for confifdence intervals, however.
+```{r}
+par(mar=c(6,4,6,2))
+plot(1:nrow(devdf), devdf$dev, bty='n', 
+     xaxt='n', xlab='', ylab='Deviation', ylim=c(-2,2),
+     pch=19,cex=0.5)
+  #segments(x0=1:nrow(d), x1=1:nrow(d), y0=pred_tab$pred_boot-pred_tab$pred_sd, y1=pred_tab$pred_boot+pred_tab$pred_sd, lty=3)
+  axis(1, at=1:nrow(devdf), labels=devdf$stock, las=2, cex.axis=0.3)
+  abline(h=0,lty=2)
+```
+```{r}
+write.csv(devdf, 
+          row.names=FALSE,
+          file='../deviance_bbmsy.csv')
+
+```
+
+
+Boxplots of B/BMSY vs. Oceana status
+```{r}
+pdf('BBMSYvsOceana.pdf',height=4.5,width=6.5)
+plot(dat_ram$bbmsy ~ dat_ram$status, xlab='', ylab='')
+mtext(side=2,expression('B/B'['MSY']),line=2.5)
+dev.off()
+
+```
+
+
+
+
