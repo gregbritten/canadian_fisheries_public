@@ -15,7 +15,7 @@ library(readxl)
 
 Load latest version of RAM dataset as an rdata file. 
 ```{r}
-load('../data/RAMLDB v4.495/R Data/DBdata[asmt][v4.495].RData') #loads 's
+load('data/DBdata[asmt][v4.495].RData') #loads 's
 cdn_stocks  <- stock %>% filter(primary_country=="Canada")
 cdn_data    <- timeseries_values_views %>% filter(stockid%in%cdn_stocks$stockid)
 ```
@@ -26,7 +26,7 @@ Find intersection of stocks
 ```{r}
 stocks    <- unique(cdn_data$stockid)
 
-dd        <- read_excel('../data/Cdn_fishery_attributes_current.xlsx', sheet="2022 Fishery attributes")
+dd        <- read_excel('data/Cdn_fishery_attributes_current.xlsx', sheet="2022 Fishery attributes")
 dd_stocks <- unique(dd$ram_stock_id)
 
 istocks <- intersect(dd_stocks,stocks)
@@ -53,7 +53,7 @@ df <- df[complete.cases(df$bbmsy),] %>% .[order(.$bbmsy),] #order according to m
 ```{r}
 write.csv(df, 
           row.names=FALSE,
-          file='../bbmsy.csv')
+          file='bbmsy.csv')
 
 ```
 
@@ -182,7 +182,7 @@ ddf$cat[ddf$cat==0] <- 'No'
 ```
 
 ```{r}
-write.csv(ddf[,c(1,3,4,5)],file='../coefficients_bbmsy.csv')
+write.csv(ddf[,c(1,3,4,5)],file='coefficients_bbmsy.csv')
 ```
 
 
@@ -214,7 +214,7 @@ dfcon <- df[df$var %in% cont_var,] %>% na.omit()
 ```
 
 ```{r}
-write.csv(dfcon,row.names=FALSE,file='../slopes_bbmsy.csv')
+write.csv(dfcon,row.names=FALSE,file='slopes_bbmsy.csv')
 ```
 
 Plot slopes of pruned model
@@ -247,7 +247,7 @@ plot(1:nrow(devdf), devdf$dev, bty='n',
 ```{r}
 write.csv(devdf, 
           row.names=FALSE,
-          file='../deviance_bbmsy.csv')
+          file='deviance_bbmsy.csv')
 
 ```
 

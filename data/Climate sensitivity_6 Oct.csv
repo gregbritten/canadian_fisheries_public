@@ -1,0 +1,228 @@
+dfo_stock_id,stock_id,crib_stock_id,crib_ncells,crib_stock_area,crib_sname,crib_cname,crib_sens,crib_sens_sd
+Atlantic Cod - 2J3KL,COD_2J3KL,Atlantic Cod - 2J3KL,815,2J3KL,gadus morhua,atlantic cod,0.496729751,0.104221475
+Atlantic Cod - 3Ps,COD_3Ps,Atlantic Cod - 3Ps,155,3Ps,gadus morhua,atlantic cod,0.673499963,0.070529293
+Albacore Tuna - North Pacific,ALTUNA_PAC,Albacore Tuna - North Pacific,901,North Pacific,thunnus alalunga,albacore tuna,0.147400609,0.079448386
+American Lobster - LFA 3-14c,LOB_NLAV_LFA7_to10,American Lobster - LFA 3-14c,933,LFA 3-14c,homarus americanus,american lobster,0.337473714,0.084643419
+American Lobster - LFA 3-14c,LOB_NLNE_LFA3_to_6,American Lobster - LFA 3-14c,933,LFA 3-14c,homarus americanus,american lobster,0.337473714,0.084643419
+American Lobster - LFA 3-14c,LOB_NLSC_LFA11_12,American Lobster - LFA 3-14c,933,LFA 3-14c,homarus americanus,american lobster,0.337473714,0.084643419
+American Lobster - LFA 3-14c,LOB_NLWC_LFA13_14,American Lobster - LFA 3-14c,933,LFA 3-14c,homarus americanus,american lobster,0.337473714,0.084643419
+American Plaice - Southern Gulf of St. Lawrence (4T),AMPLA_4T,American Plaice - Southern Gulf of St. Lawrence (4T),207,4T,hippoglossoides platessoides,american plaice,0.54707864,0.06906061
+Atlantic Canada Dogfish - 4VWNX - 5,ATDOG_4VWNX_5,Atlantic Canada Dogfish - 4VWNX - 5,38,5,squalus acanthias,atlantic dogfish,0.323985619,0.058124783
+Atlantic Cod - 4X5Y,COD_4X5Yb,Atlantic Cod - 4X5Y,151,4X5Y,gadus morhua,atlantic cod,0.646440918,0.053945791
+Atlantic Cod - 5Zjm,COD_5Zjm,Atlantic Cod - 5Zjm,29,5Zjm,gadus morhua,atlantic cod,0.66234159,0.070921531
+Atlantic Halibut - 3NOPs4VWX+5,ATHAL_3NOPs4VWX+5,Atlantic Halibut - 3NOPs4VWX+5,NA,NA,NA,NA,NA,NA
+Atlantic Halibut - 4RST,ATHAL_4RST,Atlantic Halibut - 4RST,NA,NA,NA,NA,NA,NA
+Bluefin Tuna - Western Atlantic,ATBTUNA_WATL,Bluefin Tuna - Western Atlantic,2944,Western Atlantic,thunnus thynnus,bluefin tuna,0.378155104,0.069647566
+Bocaccio,BOROCK_PAC,Bocaccio,NA,NA,NA,NA,NA,NA
+Canary Rockfish,CAROCK_PAC,Canary Rockfish,NA,NA,NA,NA,NA,NA
+Capelin - 4RST,CAPE_4RST,Capelin - 4RST,447,4RST,mallotus villosus,capelin,0.513869846,0.075715816
+Capelin - SA2+3KLPs,CAPE_23KLPs,Capelin - SA2+3KLPs,1006,SA2+3KLPs,mallotus villosus,capelin,0.336880659,0.109801708
+Cod - 4RS-3Pn,COD_3Pn4RS,Cod - 4RS-3Pn,274,4RS-3Pn,gadus morhua,cod,0.598375492,0.072959347
+Cod - Southern Gulf of St. Lawrence (4TVn),COD_4TVn,Cod - Southern Gulf of St. Lawrence (4TVn),268,4TVn,gadus morhua,cod,0.662911812,0.06940027
+Common Clam,SUCLA_NS,Common Clam,NA,NA,NA,NA,NA,NA
+Common Clam,CLAM_QC_1ABC,Common Clam,NA,NA,NA,NA,NA,NA
+Common Clam,CLAM_QC_UNS,Common Clam,NA,NA,NA,NA,NA,NA
+Dogfish - Inside,SPDOG_IN,Dogfish - Inside,NA,NA,NA,NA,NA,NA
+Dogfish - Outside,SPDOG_OUT,Dogfish - Outside,NA,NA,NA,NA,NA,NA
+Dungeness Crab,DUGRAB_PAC,Dungeness Crab,NA,NA,NA,NA,NA,NA
+Euphausiids,KRILL_PAC,Euphausiids,NA,NA,NA,NA,NA,NA
+Geoduck,GEDUCK_PAC,Geoduck,NA,NA,NA,NA,NA,NA
+Giant Red Sea Cucumber,SECUC_PAC,Giant Red Sea Cucumber,NA,NA,NA,NA,NA,NA
+Green Sea Urchin,GRURCH_PAC,Green Sea Urchin,NA,NA,NA,NA,NA,NA
+Greenland Halibut - 4RST,GRHAL_4RST,Greenland Halibut - 4RST,NA,NA,NA,NA,NA,NA
+Greenland Halibut - NAFO 0A and 0B,GRHAL_0A,Greenland Halibut - NAFO 0A and 0B,NA,NA,NA,NA,NA,NA
+Greenland Halibut - NAFO 0A and 0B,GRHAL_0B,Greenland Halibut - NAFO 0A and 0B,NA,NA,NA,NA,NA,NA
+Greenland Halibut (Turbot) - 2 + 3KLMNO,GRHAL_23KLMNO,Greenland Halibut (Turbot) - 2 + 3KLMNO,NA,NA,NA,NA,NA,NA
+Haddock - 4X5Y,HAD_4X5Y,Haddock - 4X5Y,151,4X5Y,melanogrammus aeglefinus,haddock,0.658979388,0.052508215
+Haddock - 5Zjm,HAD_5Zjm,Haddock - 5Zjm,29,5Zjm,melanogrammus aeglefinus,haddock,0.666941666,0.071574983
+Herring - 2J3IKLPs,ATHERR_2J3IKLPs_HFA1_to11,Herring - 2J3IKLPs,941,2J3IKLPs,clupea harengus,herring,0.277410666,0.069962744
+Herring - 4R (Fall Spawner),ATHERR_4Rfall,Herring - 4R (Fall Spawner),84,4R,clupea harengus,herring,0.311640302,0.072402521
+Herring - 4S,ATHERR_4S,Herring - 4S,178,4S,clupea harengus,herring,0.279905787,0.064400439
+Herring - 4T (Fall Spawner),ATHERR_4Tfall,Herring - 4T (Fall Spawner),207,4T,clupea harengus,herring,0.366258957,0.074357791
+Herring - 4T (Spring Spawner),ATHERR_4Tspring,Herring - 4T (Spring Spawner),207,4T,clupea harengus,herring,0.366258957,0.074357791
+Herring - 4VWX,ATHERR_4VWX,Herring - 4VWX,430,4VWX,clupea harengus,herring,0.359163032,0.059052885
+"Herring - 5Y, 5Z (weirs)",ATHERR_5YZ_WEIRS,"Herring - 5Y, 5Z (weirs)",38,"5Y, 5Z",clupea harengus,herring,0.383608006,0.065066055
+Herring - Central Coast (Pacific),PAHERR_CC,Herring - Central Coast (Pacific),4,Central Coast,clupea pallasii,herring,0.371860663,0.078586148
+Herring - Haida Gwaii (Pacific),PAHERR_HG_QCI,Herring - Haida Gwaii (Pacific),10,Haida Gwaii,clupea pallasii,herring,0.356163021,0.121762601
+Herring - Prince Rupert District (Pacific),PAHERR_PRD,Herring - Prince Rupert District (Pacific),11,Prince Rupert District,clupea pallasii,herring,0.373546044,0.067641348
+Herring - Strait of Georgia (Pacific,PAHERR_SOG,Herring - Strait of Georgia (Pacific,13,Strait of Georgia Pacific,clupea pallasii,herring,0.543050414,0.092405474
+Herring - WCVI (Pacific),PAHERR_WCVI,Herring - WCVI (Pacific),5,WCVI,clupea pallasii,herring,0.432374113,0.061973467
+Herring - 4R (Spring Spawner),ATHERR_4Rspring,Herring - 4R (Spring Spawner),84,4R,clupea harengus,herring,0.311640302,0.072402521
+Icelandic Scallop - 16EF,SCAL_NSHORE,Icelandic Scallop - 16EF,NA,NA,NA,NA,NA,NA
+Intertidal Clams - Central Coast-Heiltsuk Manila,INCLA_CC_HM,Intertidal Clams - Central Coast-Heiltsuk Manila,NA,NA,NA,NA,NA,NA
+Intertidal Clams - North Coast Haida Gwaii Razor,INCLA_NCHW_RAZOR,Intertidal Clams - North Coast Haida Gwaii Razor,NA,NA,NA,NA,NA,NA
+Intertidal Clams - South Coast-Vancouver Island,INCLA_SCVI,Intertidal Clams - South Coast-Vancouver Island,NA,NA,NA,NA,NA,NA
+Lingcod - Outside,PALIN_OUT,Lingcod - Outside,241,Outside,ophiodon elongatus,lingcod,0.406144701,0.088697304
+Lobster - Areas 19-20-21 (Gaspé),LOB_LFA19_20_21,Lobster - Areas 19-20-21 (Gaspé),25,Areas 19-20-21,homarus americanus,lobster,0.327833924,0.0908849
+Lobster - Inshore LFA 27-33,LOB_IN_LFA27_to_33,Lobster - Inshore LFA 27-33,168,Inshore LFA 27-33,homarus americanus,lobster,0.423054971,0.064821403
+Lobster - Inshore LFA 34,LOB_IN_LFA34,Lobster - Inshore LFA 34,43,Inshore LFA 34,homarus americanus,lobster,0.361197344,0.032425234
+Lobster - Inshore LFA 35-38,LOB_IN_LFA_35_to_38,Lobster - Inshore LFA 35-38,22,Inshore LFA 35-38,homarus americanus,lobster,0.399980782,0.044013572
+Lobster - Offshore LFA 41,LOB_OFF_LFA41,Lobster - Offshore LFA 41,241,Offshore LFA 41,homarus americanus,lobster,0.431152148,0.066328664
+"Lobster - Southern Gulf (LFA 23, 24, 25, 26A, 26B)",LOB_SGOSL_LFA23_24_25_26A_26B,"Lobster - Southern Gulf (LFA 23, 24, 25, 26A, 26B)",77,"LFA 23, 24, 25, 26A, 26B",homarus americanus,lobster,0.499916009,0.048654353
+Lobster - Zone 22 (MI),LOB_LFA22,Lobster - Zone 22 (MI),77,Zone 22 MI,homarus americanus,lobster,0.423450086,0.049598598
+Longspine Thornyhead,LOTHOR_PAC,Longspine Thornyhead,NA,NA,NA,NA,NA,NA
+Mackerel - Atlantic (NAFO 3-4),ATMAC_SA3_4,Mackerel - Atlantic (NAFO 3-4),1815,Atlantic NAFO 3-4,scomber scombrus,mackerel,0.513079327,0.087165865
+Northern Shrimp - SFA 5,NOSHR_SFA5,Northern Shrimp - SFA 5,209,SFA 5,pandalus borealis,northern shrimp,0.276670279,0.064590951
+Northern Shrimp - SFA 6,NOSHR_SFA6,Northern Shrimp - SFA 6,399,SFA 6,pandalus borealis,northern shrimp,0.240202571,0.043619983
+Northern Shrimp - SFA 7,NOSHR_SFA7,Northern Shrimp - SFA 7,466,SFA 7,pandalus borealis,northern shrimp,0.3783808,0.075478491
+Northern Shrimp (Borealis) - Eastern Assessment Zone,NOSHR_EAZ,Northern Shrimp (Borealis) - Eastern Assessment Zone,499,Eastern Assessment Zone,pandalus borealis,northern shrimp,0.19678901,0.041638554
+Northern Shrimp (Borealis) - SFA 1,NOSHR_SFA1,Northern Shrimp (Borealis) - SFA 1,96,SFA 1,pandalus borealis,northern shrimp,0.181530748,0.01656454
+Northern Shrimp (Borealis) - SFA 4,NOSHR_SFA4,Northern Shrimp (Borealis) - SFA 4,171,SFA 4,pandalus borealis,northern shrimp,0.255612496,0.057936335
+Northern Shrimp (Borealis) - WAZ,NOSHR_WAZ,Northern Shrimp (Borealis) - WAZ,178,WAZ,pandalus borealis,northern shrimp,0.234805648,0.043706523
+Pacific Hake - Offshore,PAHAKE_PAC,Pacific Hake - Offshore,229,Offshore,merluccius productus,pacific hake,0.176276224,0.103267131
+Pacific Halibut,PAHAL_PAC,Pacific Halibut,NA,NA,NA,NA,NA,NA
+Pacific Ocean Perch - PMFC 3CD-WCVI,POPER_WCVI_3CD,Pacific Ocean Perch - PMFC 3CD-WCVI,52,PMFC 3CD-WCVI,sebastes alutus,pacific ocean perch,0.526211452,0.074061566
+Pacific Ocean Perch - PMFC 5ABC-QCS,POPER_QCS_5ABC,Pacific Ocean Perch - PMFC 5ABC-QCS,124,PMFC 5ABC-QCS,sebastes alutus,pacific ocean perch,0.479542301,0.060639225
+Pacific Ocean Perch - PMFC 5DE-HS/DE/WHG,POPER_HS_DE_WHG_5DE,Pacific Ocean Perch - PMFC 5DE-HS/DE/WHG,77,PMFC 5DE-HS/DE/WHG,sebastes alutus,pacific ocean perch,0.461824883,0.087490923
+Pacific Oyster,PACOYST_WCVI_ECVI,Pacific Oyster,NA,NA,NA,NA,NA,NA
+Pink and Spiny Scallop,PISP_SCAL_PAC,Pink and Spiny Scallop,NA,NA,NA,NA,NA,NA
+Pollock - 4X5 (Western Component),POLL_WC_4X5,Pollock - 4X5 (Western Component),116,4X5 Western Component,pollachius virens,pollock,0.411971507,0.06120734
+Pollock - 4X5 (Western Component),POLL_EC_4VW+4Xmn,Pollock - 4X5 (Western Component),116,4X5 Western Component,pollachius virens,pollock,0.411971507,0.06120734
+Queen / Snow Crab - CFA 1-12,SNCRAB_2HJ,Queen / Snow Crab - CFA 1-12,842,CFA 1-12,chionoecetes opilio,snow crab,0.42911659,0.120986027
+Queen / Snow Crab - CFA 1-12,SNCRAB_3K,Queen / Snow Crab - CFA 1-12,842,CFA 1-12,chionoecetes opilio,snow crab,0.42911659,0.120986027
+Queen / Snow Crab - CFA 1-12,SNCRAB_3L_IN,Queen / Snow Crab - CFA 1-12,842,CFA 1-12,chionoecetes opilio,snow crab,0.42911659,0.120986027
+Queen / Snow Crab - CFA 1-12,SNCRAB_3LNO_OFF,Queen / Snow Crab - CFA 1-12,842,CFA 1-12,chionoecetes opilio,snow crab,0.42911659,0.120986027
+Queen / Snow Crab - CFA 1-12,SNCRAB_3Ps,Queen / Snow Crab - CFA 1-12,842,CFA 1-12,chionoecetes opilio,snow crab,0.42911659,0.120986027
+Queen / Snow Crab - CFA 1-12,SNCRAB_4R3Pn,Queen / Snow Crab - CFA 1-12,842,CFA 1-12,chionoecetes opilio,snow crab,0.42911659,0.120986027
+Quillback Rockfish - Inside,QUROCK_IN,Quillback Rockfish - Inside,19,Inside,sebastes maliger,quillback rockfish,0.579352573,0.078778858
+Quillback Rockfish - Outside,QUROCK_OUT,Quillback Rockfish - Outside,225,Outside,sebastes maliger,quillback rockfish,0.481557201,0.079343652
+Red Sea Urchin,REURCH_PAC,Red Sea Urchin,NA,NA,NA,NA,NA,NA
+Redfish - 3LN,REDFISH_3LN,Redfish - 3LN,347,3LN,sebastes fasciatus,redfish,0.766993489,0.061150683
+Redfish - 3O,REDFISH_3O,Redfish - 3O,124,3O,sebastes fasciatus,redfish,0.780462394,0.045951604
+Redfish - Unit 3,ACRED_UNIT3,Redfish - Unit 3,249,Unit 3,sebastes fasciatus,redfish,0.781841385,0.053121781
+Redfish (Sebastes fasciatus) - Unit 1 + 2,ACRED_UNIT1_2,Redfish (Sebastes fasciatus) - Unit 1 + 2,472,Unit 1 + 2,sebastes fasciatus,redfish (sebastes fasciatus),0.752400283,0.067347026
+Redfish (Sebastes mentella) - Unit 1 + 2,DERED_UNIT1_2,Redfish (Sebastes mentella) - Unit 1 + 2,398,Unit 1 + 2,sebastes mentella,redfish (sebastes mentella),0.529153071,0.075103454
+"Rock Crab - LFA 23, 24, 25, 26A",ROCRAB_CFA23_24_25_26A,"Rock Crab - LFA 23, 24, 25, 26A",71,"LFA 23, 24, 25, 26A",cancer irroratus,rock crab,0.375055239,0.034617972
+Rougheye Rockfish,ROEYEROCK_PAC,Rougheye Rockfish,NA,NA,NA,NA,NA,NA
+Sablefish,SABLE_PAC,Sablefish,NA,NA,NA,NA,NA,NA
+Sardine - Pacific,PASAR_PAC,Sardine - Pacific,240,Pacific,sardinops sagax,sardine,0.240190555,0.076471534
+"Scallop - Southern Gulf of St. Lawrence (SFA 21a, b, c, 22, 23, 24)",SESCAL_SGOSL_SFA_21ABC_22_23_24,"Scallop - Southern Gulf of St. Lawrence (SFA 21a, b, c, 22, 23, 24)",63,"SFA 21a, b, c, 22, 23, 24",placopecten magellanicus,scallop,0.428252426,0.034815222
+Sea Cucumber - 3Ps,SUCUC_3PS,Sea Cucumber - 3Ps,155,3Ps,cucumaria frondosa,sea cucumber,0.54861209,0.073878849
+Sea Scallop - Area 20,SCAL_MAG,Sea Scallop - Area 20,78,Area 20,placopecten magellanicus,sea scallop,0.371722919,0.041280044
+Sea Scallop - Inshore SFA 28 (Bay of Fundy),SESCAL_IN_SFA28,Sea Scallop - Inshore SFA 28 (Bay of Fundy),38,Inshore SFA 28 Bay of Fundy,placopecten magellanicus,sea scallop,0.362387473,0.045413112
+Sea Scallop - Inshore SFA 29W,SESCAL_IN_SFA29W,Sea Scallop - Inshore SFA 29W,20,Inshore SFA 29W,placopecten magellanicus,sea scallop,0.409817975,0.042030118
+"Sea Scallop - Offshore SFA 26 German, Browns",SESCAL_OFF_SFA26,"Sea Scallop - Offshore SFA 26 German, Browns",105,"Offshore SFA 26 German, Browns",placopecten magellanicus,sea scallop,0.363010783,0.061106177
+"Sea Scallop - Offshore SFA 27, Georges",SESCAL_OFF_SFA27,"Sea Scallop - Offshore SFA 27, Georges",29,"Offshore SFA 27, Georges",placopecten magellanicus,sea scallop,0.402501005,0.068423931
+Shrimp - Scotian Shelf (SFA 13-15),NOSHR_SFA13_to_15,Shrimp - Scotian Shelf (SFA 13-15),309,SFA 13-15,pandalus borealis,shrimp,0.456264489,0.070508016
+Shrimp Trawl,NO_PI_SHR_SMA_FR,Shrimp Trawl,NA,NA,NA,NA,NA,NA
+Shrimp Trawl,NO_PI_SHR_SMA_GSE,Shrimp Trawl,NA,NA,NA,NA,NA,NA
+Shrimp Trawl,NO_PI_SHR_SMA_PRD,Shrimp Trawl,NA,NA,NA,NA,NA,NA
+Shrimp Trawl,NO_PI_SHR_SMA14,Shrimp Trawl,NA,NA,NA,NA,NA,NA
+Shrimp Trawl,NO_PI_SHR_SMA16,Shrimp Trawl,NA,NA,NA,NA,NA,NA
+Shrimp Trawl,NO_PI_SHR_SMA18_19,Shrimp Trawl,NA,NA,NA,NA,NA,NA
+Shrimp Trawl,SISHR_SMA_FR,Shrimp Trawl,NA,NA,NA,NA,NA,NA
+Shrimp Trawl,SISHR_SMA_GSE,Shrimp Trawl,NA,NA,NA,NA,NA,NA
+Shrimp Trawl,SISHR_SMA_PRD,Shrimp Trawl,NA,NA,NA,NA,NA,NA
+Shrimp Trawl,SISHR_SMA14,Shrimp Trawl,NA,NA,NA,NA,NA,NA
+Shrimp Trawl,SISHR_SMA16,Shrimp Trawl,NA,NA,NA,NA,NA,NA
+Shrimp Trawl,SISHR_SMA18_19,Shrimp Trawl,NA,NA,NA,NA,NA,NA
+Silver Hake - 4VWX,SIHAKE_4VWX,Silver Hake - 4VWX,445,4VWX,merluccius bilinearis,silver hake,0.408860081,0.066663465
+Skate - 3LNO,THSKA_3LNO,Skate - 3LNO,484,3LNO,amblyraja radiata,skate,0.326831172,0.062813543
+Snow Crab - 12A,SNCRAB_NGOSL_CMA_12A,Snow Crab - 12A,11,12A,chionoecetes opilio,snow crab,0.42148888,0.083564024
+Snow Crab - 12B,SNCRAB_NGOSL_CMA_12B,Snow Crab - 12B,32,12B,chionoecetes opilio,snow crab,0.497180401,0.077393668
+Snow Crab - 12C,SNCRAB_NGOSL_CMA_12C,Snow Crab - 12C,18,12C,chionoecetes opilio,snow crab,0.447011416,0.03938024
+Snow Crab - 13,SNCRAB_NGOSL_CMA_13,Snow Crab - 13,35,13,chionoecetes opilio,snow crab,0.474686577,0.08274763
+Snow Crab - 14,SNCRAB_NGOSL_CMA_14,Snow Crab - 14,19,14,chionoecetes opilio,snow crab,0.41978555,0.046702706
+Snow Crab - 15,SNCRAB_NGOSL_CMA_15,Snow Crab - 15,11,15,chionoecetes opilio,snow crab,0.461751388,0.055046741
+Snow Crab - 16,SNCRAB_NGOSL_CMA_16,Snow Crab - 16,9,16,chionoecetes opilio,snow crab,0.440456889,0.045600974
+Snow Crab - 16A,SNCRAB_NGOSL_CMA_16A,Snow Crab - 16A,9,16A,chionoecetes opilio,snow crab,0.440456889,0.045600974
+Snow Crab - 17,SNCRAB_NGOSL_CMA_17,Snow Crab - 17,17,17,chionoecetes opilio,snow crab,0.438253454,0.065005497
+"Snow Crab - CFA 12 (12, 18, 25, 26), 12E, 12F, 19",SNCRAB_SGOSL_CFA_12_18_25_26_12E_12F_19,"Snow Crab - CFA 12 (12, 18, 25, 26), 12E, 12F, 19",166,"CFA 12 12, 18, 25, 26, 12E, 12F, 19",chionoecetes opilio,snow crab,0.556402413,0.059581285
+Snow Crab - Scotian Shelf (4X),SNCRAB_4X,Snow Crab - Scotian Shelf (4X),157,4X,chionoecetes opilio,snow crab,0.51792547,0.057910317
+Snow Crab - Scotian Shelf (ENS-N),SNCRAB_ENS_N,Snow Crab - Scotian Shelf (ENS-N),42,ENS-N,chionoecetes opilio,snow crab,0.499454668,0.069027982
+Snow Crab - Scotian Shelf (ENS-S),SNCRAB_ENS_S,Snow Crab - Scotian Shelf (ENS-S),266,ENS-S,chionoecetes opilio,snow crab,0.533144084,0.066528103
+Spot Prawn,PRAWN_TRAP_PAC,Spot Prawn,NA,NA,NA,NA,NA,NA
+Stimpsons Surfclam,SUCLA_5A1_5B1,Stimpsons Surfclam,NA,NA,NA,NA,NA,NA
+Striped Shrimp (Montagui) - SFA 4,STSHR_SFA4,Striped Shrimp (Montagui) - SFA 4,171,SFA 4,pandalus montagui,striped shrimp (montagui),0.254312249,0.057558931
+Striped Shrimp (Montagui) - WAZ,STSHR_WAZ,Striped Shrimp (Montagui) - WAZ,NA,NA,NA,NA,NA,NA
+Striped Shrimp (Montagui) - Eastern Assessment Zone,STSHR_EAZ,Striped Shrimp (Montagui) - Eastern Assessment Zone,432,Eastern Assessment Zone,pandalus montagui,striped shrimp (montagui),0.19595231,0.040229928
+Surf Clam - Banquereau,ARCLA_BANQ,Surf Clam - Banquereau,66,Banquereau,mactromeris polynyma,surf clam,0.545985002,0.041571667
+Surf Clam - Grand Bank,ARCLA_GB,Surf Clam - Grand Bank,243,Grand Bank,mactromeris polynyma,surf clam,0.4500005,0.071684417
+Swordfish - North Atlantic,SWORD_ATL,Swordfish - North Atlantic,3298,North Atlantic,xiphias gladius,swordfish,0.247799889,0.070252718
+Whelk - 3PS,WHELK_3Ps,Whelk - 3PS,144,3PS,buccinum undatum,whelk,0.549908602,0.068260039
+White Hake - 3NOPs,WHHAKE_3NOPs,White Hake - 3NOPs,261,3NOPs,urophycis tenuis,white hake,0.362826436,0.074088337
+White Hake - 4T,WHHAKE_4T,White Hake - 4T,101,4T,urophycis tenuis,white hake,0.351811297,0.085701299
+Winter Flounder - 4RST,WINFLO_4T,Winter Flounder - 4RST,409,4RST,pseudopleuronectes americanus,winter flounder,0.349962135,0.061813046
+Witch Flounder - 3NO,WITFLO_3NO,Witch Flounder - 3NO,197,3NO,glyptocephalus cynoglossus,witch flounder,0.531556349,0.054616343
+Witch Flounder - 3Ps,WITFLO_3Ps,Witch Flounder - 3Ps,159,3Ps,glyptocephalus cynoglossus,witch flounder,0.532498334,0.077962016
+Witch Flounder - 4RST,WITFLO_4RST,Witch Flounder - 4RST,447,4RST,glyptocephalus cynoglossus,witch flounder,0.486354917,0.092371696
+Yelloweye Rockfish - Inside Population,YEEYEROCK_IN,Yelloweye Rockfish - Inside Population,19,Inside Population,sebastes ruberrimus,yelloweye rockfish,0.656322498,0.09345906
+Yelloweye Rockfish - Outside Population,YEEYEROCK_OUT,Yelloweye Rockfish - Outside Population,241,Outside Population,sebastes ruberrimus,yelloweye rockfish,0.556269153,0.087935564
+Yellowmouth Rockfish,YEMOROCK_PAC,Yellowmouth Rockfish,NA,NA,NA,NA,NA,NA
+Yellowtail Flounder - 3LNO,YEFLO_3LNO,Yellowtail Flounder - 3LNO,462,3LNO,limanda ferruginea,yellowtail flounder,0.501777583,0.087932
+Yellowtail Flounder - 5Z,YEFLO_5Z,Yellowtail Flounder - 5Z,29,5Z,limanda ferruginea,yellowtail flounder,0.536553707,0.076830437
+,LOB_QCNSAI_LFA15-18_17,LOB_QCNSAI_LFA15-18_17,161,LFA15-18_17,homarus americanus,american lobster,0.314396135,0.060713011
+,AMPLA_23K,AMPLA_23K,1280,23K,hippoglossoides platessoides,american plaice,0.259144732,0.066734993
+,AMPLA_3LNO,AMPLA_3LNO,509,3LNO,hippoglossoides platessoides,american plaice,0.480671103,0.094150101
+,AMPLA_3Ps,AMPLA_3Ps,170,3Ps,hippoglossoides platessoides,american plaice,0.536129056,0.077395203
+,AMPLA_4VWX,AMPLA_4VWX,552,4VWX,hippoglossoides platessoides,american plaice,0.514304913,0.074046588
+,ARC_COD,ARC_COD,NA,NA,NA,NA,NA,NA
+,ARFLO_3CD_5ABCDE,ARFLO_3CD_5ABCDE,193,5ABCDE,atheresthes stomias,arrowtooth flounder,0.471820321,0.08902898
+,ATCOD_2GH,ATCOD_2GH,336,2GH,gadus morhua,atlantic cod,0.38538647,0.062779423
+,COD_3NO,COD_3NO,191,3NO,gadus morhua,atlantic cod,0.67206221,0.04029869
+,COD_4VsW,COD_4VsW,244,4VsW,gadus morhua,atlantic cod,0.669534689,0.059780871
+,BISKA_HS_5CDE,BISKA_HS_5CDE,137,5CDE,raja binoculata,big skate,0.340726115,0.088640135
+,BISKA_QCS_5AB,BISKA_QCS_5AB,69,5AB,raja binoculata,big skate,0.333225553,0.075080033
+,BISKA_SOG_4B,BISKA_SOG_4B,19,4B,raja binoculata,big skate,0.517975331,0.102694864
+,BISKA_WCV_3CD,BISKA_WCV_3CD,52,3CD,raja binoculata,big skate,0.382603043,0.095839683
+,CUSK_4VWX5Z,CUSK_4VWX5Z,466,4VWX5Z,brosme brosme,cusk,0.536877671,0.065462904
+,GOBARN_CLAY,GOBARN_CLAY,NA,NA,NA,NA,NA,NA
+,GRHAL_CS,GRHAL_CS,NA,NA,NA,NA,NA,NA
+,HAD_3LNO,HAD_3LNO,466,3LNO,melanogrammus aeglefinus,haddock,0.620971503,0.081380075
+,HAD_3Ps,HAD_3Ps,155,3Ps,melanogrammus aeglefinus,haddock,0.680512414,0.069970751
+,HAGFISH_4T,HAGFISH_4T,203,4T,myxine glutinosa,hagfish,0.390955157,0.082406659
+,HAGFISH_4VWX5Z,HAGFISH_4VWX5Z,474,4VWX5Z,myxine glutinosa,hagfish,0.381595041,0.065711675
+,SCAL_GASP,SCAL_GASP,NA,NA,NA,NA,NA,NA
+,ICSCAL_STPIERRE,ICSCAL_STPIERRE,NA,NA,NA,NA,NA,NA
+,INCLA_DE,INCLA_DE,NA,NA,NA,NA,NA,NA
+,JOCRAB_LFA41,JOCRAB_LFA41,249,LFA41,cancer borealis,jonah crab,0.295411229,0.060884456
+,LICOD_SOG_4B,LICOD_SOG_4B,19,4B,ophiodon elongatus,lingcod,0.534807139,0.092729396
+,LONOSKA_HS_5CDE,LONOSKA_HS_5CDE,151,5CDE,raja rhina,longnose skate,0.242510887,0.086559194
+,LONOSKA_QCS_5AB,LONOSKA_QCS_5AB,73,5AB,raja rhina,longnose skate,0.233356416,0.076207413
+,LONOSKA_SOG_4B,LONOSKA_SOG_4B,19,4B,raja rhina,longnose skate,0.466276671,0.112627783
+,LONOSKA_WCVI_3CD,LONOSKA_WCVI_3CD,60,3CD,raja rhina,longnose skate,0.258164454,0.097956438
+,LUFISH_4RS_3Pn,LUFISH_4RS_3Pn,18,3Pn,cyclopterus lumpus,lumpfish,0.339057879,0.069300616
+,LUMP_2GHL,LUMP_2GHL,348,2GHL,cyclopterus lumpus,lumpfish,0.250585189,0.063026184
+,LUMP_3KLP,LUMP_3KLP,738,3KLP,cyclopterus lumpus,lumpfish,0.308802603,0.082865935
+,MONK_3LNOPs,MONK_3LNOPs,630,3LNOPs,lophius americanus,monkfish,0.308947099,0.060559555
+,NOSHR_GOSL_SFA_8_9_10_12,NOSHR_GOSL_SFA_8_9_10_12,NA,NA,NA,NA,NA,NA
+,PACOD_HS_5CD,PACOD_HS_5CD,108,5CD,gadus macrocephalus,pacific cod,0.330511661,0.078838716
+,PACOD_QCS_5AB,PACOD_QCS_5AB,73,5AB,gadus macrocephalus,pacific cod,0.29688113,0.074584217
+,PACOD_WCVI_3CD,PACOD_WCVI_3CD,69,3CD,gadus macrocephalus,pacific cod,0.322856143,0.097242721
+,POLL_3Ps,POLL_3Ps,147,3Ps,pollachius virens,pollock,0.400744068,0.068134512
+,PORSHARK_ATL,PORSHARK_ATL,NA,NA,NA,NA,NA,NA
+,RERO_3CD_5ABCDE,RERO_3CD_5ABCDE,189,5ABCDE,sebastes babcocki,redbanded rockfish,0.55103719,0.085035362
+,ACRED_23K,ACRED_23K,839,23K,sebastes fasciatus,redfish,0.536302889,0.093081987
+,DERED_23K,DERED_23K,1390,23K,sebastes mentella,redfish,0.270383478,0.071969477
+,REROCK_PAC_3CD5ABC,REROCK_PAC_3CD5ABC,172,3CD5ABC,sebastes proriger,redstripe rockfish,0.480061605,0.085692983
+,REROCK_PAC_5DE,REROCK_PAC_5DE,77,5DE,sebastes proriger,redstripe rockfish,0.467405596,0.094710956
+,ROCRAB_QCW,ROCRAB_QCW,NA,NA,NA,NA,NA,NA
+,ROSOLE_HS_5CD,ROSOLE_HS_5CD,108,5CD,lepidopsetta bilineata,rock sole,0.360824743,0.081626869
+,ROSOLE_QCS_5AB,ROSOLE_QCS_5AB,69,5AB,lepidopsetta bilineata,rock sole,0.333215337,0.074215224
+,GREN_AT_ARC,GREN_AT_ARC,NA,NA,NA,NA,NA,NA
+,GREN_23KL,GREN_23KL,NA,NA,NA,NA,NA,NA
+,SECUC_QC,SECUC_QC,NA,NA,NA,NA,NA,NA
+,SECUC_SWNB,SECUC_SWNB,NA,NA,NA,NA,NA,NA
+,SESCAL_3Ps,SESCAL_3Ps,71,3Ps,placopecten magellanicus,sea scallop,0.353777665,0.06367773
+,SHTHOR_PAC,SHTHOR_PAC,NA,NA,NA,NA,NA,NA
+,SIROCK_PAC,SIROCK_PAC,250,PAC,sebastes brevispinis,silvergrey rockfish,0.391159237,0.098270704
+,SMSKA_NENL_2J3K,SMSKA_NENL_2J3K,291,2J3K,malacoraja senta,smooth skate,0.444347185,0.073332817
+,SMSKA_SGOSL_4T,SMSKA_SGOSL_4T,184,4T,malacoraja senta,smooth skate,0.69432213,0.064243875
+,THSKA_4T,THSKA_4T,203,4T,amblyraja radiata,thorny skate,0.376968928,0.0781157
+,RO_TO_CRAB_NL,RO_TO_CRAB_NL,NA,NA,NA,NA,NA,NA
+,GRURCH_GOSL,GRURCH_GOSL,NA,NA,NA,NA,NA,NA
+,SEURCH_NL,SEURCH_NL,NA,NA,NA,NA,NA,NA
+,WAPOL_NORTH,WAPOL_NORTH,169,NORTH,theragra chalcogramma,walleye pollock,0.290522079,0.088968752
+,WAPOL_SOUTH,WAPOL_SOUTH,142,SOUTH,theragra chalcogramma,walleye pollock,0.307226039,0.085506812
+,WHELK_2J3K3L4R,WHELK_2J3K3L4R,897,2J3K3L4R,buccinum undatum,whelk,0.439570039,0.110040268
+,WHELK_QC_1_15,WHELK_QC_1_15,NA,NA,NA,NA,NA,NA
+,WHHAKE_4RS,WHHAKE_4RS,250,4RS,urophycis tenuis,white hake,0.311348038,0.071130952
+,WHHAKE_4VW,WHHAKE_4VW,296,4VW,urophycis tenuis,white hake,0.369167838,0.074356299
+,WHHAKE_4X5Zc,WHHAKE_4X5Zc,148,4X5Zc,urophycis tenuis,white hake,0.388106621,0.05839179
+,WIROCK_PAC,WIROCK_PAC,NA,NA,NA,NA,NA,NA
+,WINFLO_23KL,WINFLO_23KL,180,23KL,pseudopleuronectes americanus,winter flounder,0.312562412,0.056068005
+,WISKA_3LNOP,WISKA_3LNOP,111,3LNOP,leucoraja ocellata,winter skate,0.613420403,0.038089667
+,WISKA_4T,WISKA_4T,177,4T,leucoraja ocellata,winter skate,0.646600055,0.063462984
+,WISKA_4VW,WISKA_4VW,260,4VW,leucoraja ocellata,winter skate,0.646818222,0.040693864
+,WIFLO_23KL,WIFLO_23KL,879,23KL,glyptocephalus cynoglossus,witch flounder,0.321389369,0.09508166
+,YEFLO_4T,YEFLO_4T,182,4T,limanda ferruginea,yellowtail flounder,0.567471473,0.057766195

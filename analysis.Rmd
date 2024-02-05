@@ -10,7 +10,7 @@ output:
 
 Call script to load packages and process data 
 ```{r message=FALSE, warning=FALSE}
-source('../r/process.r')
+source('process.r')
 ```
 
 Fit full model
@@ -115,7 +115,7 @@ legend(x=1,y=8,bty='n',
 ```
 
 ```{r}
-write.csv(file='../coefficients_2022.csv',data.frame(variable=ddf$var,
+write.csv(file='coefficients_2022.csv',data.frame(variable=ddf$var,
                                                  coefficient=ddf$coefs_r,
                                                  standard_error=ddf$ses_r,
                                                  category=ddf$cat),row.names=FALSE)
@@ -136,7 +136,7 @@ par(mar=c(6,3,2,2),oma=c(2,2,2,2))
 ```
 
 ```{r}
-write.csv(file='../slopes_2022.csv',data.frame(variable=dfcon$var,
+write.csv(file='slopes_2022.csv',data.frame(variable=dfcon$var,
                                           coefficient=dfcon$coefs_r,
                                           standard_error=dfcon$ses_r),row.names=FALSE)
 ```
@@ -216,7 +216,7 @@ Write predictions to disk
 ```{r}
 write.csv(pred_tab, 
           row.names=FALSE,
-          file='../deviance_2022.csv')
+          file='deviance_2022.csv')
 ```
 
 # Cross Validation
@@ -276,7 +276,7 @@ dun_pred <- data.frame(stock  = dun$stock_id,
 ```
 
 ```{r}
-write.csv(dun_pred, row.names=FALSE, file='../predictions.csv')
+write.csv(dun_pred, row.names=FALSE, file='predictions.csv')
 ```
 
 Check the proportion of *Uncertain* stocks predicted to be *Critical*, *Cautious*, and *Healthy*:
@@ -293,7 +293,7 @@ table(d$status)/nrow(d)
 
 Read in data, create data frame for merging, and define factor variable
 ```{r,tidy=TRUE, tidy.opts=list(width.cutoff=60)}
-cmsy <- read_excel('../data/CMSY_uncertain stocks.xlsx', sheet="Oceana_CMSY")
+cmsy <- read_excel('data/CMSY_uncertain stocks.xlsx', sheet="Oceana_CMSY")
 
 cmsy_status <- data.frame(stock       = cmsy$stock_id[cmsy$stock_id%in%intersect(cmsy$stock_id,dun$stock_id)],
                           cmsy_status = cmsy$`Stock status`[cmsy$stock_id%in%intersect(cmsy$stock_id,dun$stock_id)]) %>%
@@ -320,6 +320,6 @@ Write a table to disk.
 ```{r}
 write.csv(compare, 
           row.names=FALSE,
-          file='../data/compare_predictions.csv')
+          file='compare_predictions.csv')
 ```
 

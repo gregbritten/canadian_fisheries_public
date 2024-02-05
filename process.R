@@ -5,12 +5,11 @@ library(formatR)   #for better formatting of RMarkdown
 
 
 #load dataset
-dd <- read_excel('../data/Cdn_fishery_attributes_current.xlsx', sheet="2022 Fishery attributes")
+dd <- read_excel('data/Cdn_fishery_attributes_current.xlsx', sheet="2022 Fishery attributes")
 dd$gear_old <- dd$gear
 dd$gear     <- dd$gear_current
-#dd <- read_excel('../data/Cdn_fishery_attributes_Sept2022.xlsx', sheet="2021 Fishery attributes")
 
-cs <- read_csv('../data/Climate sensitivity_6 Oct.csv')
+cs <- read_csv('data/Climate sensitivity_6 Oct.csv')
 
 dd <- left_join(dd,cs,by="stock_id")
 
